@@ -88,16 +88,17 @@
         ctx.moveTo(0,0);
         if(bump_type == 'triangle'){
           ctx.lineTo(f/2,-a);
+          ctx.lineTo(f,0);
         }
         if(bump_type == 'sawtooth'){
           ctx.lineTo(0,-a);
+          ctx.lineTo(f,0);
         }
         if(bump_type == 'square'){
           ctx.lineTo(0,-a);
           ctx.lineTo(f/2,-a);
           ctx.lineTo(f/2,0);
         }
-        ctx.lineTo(f,0);
         ctx.stroke();
       }
 
