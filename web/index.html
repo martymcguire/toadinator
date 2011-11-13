@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+    <link rel="stylesheet" href="jquery-ui.custom.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+    <style>
+      .ui-slider { margin: 5px 0 10px 0; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <h1>Toadinator!</h1>
+          <p>Hello. These are instructions.  Pretend you know what you're doing, please. Is that okay?  I hope so. Yep.</p>
+          <p>Content is secondary.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span-one-third">
+          <form class="form-stacked">
+            <fieldset>
+              <div class="clearfix">
+                <label id="bump-type">Bump Type</label>
+                <div class="input">
+                  <ul class="inputs-list">
+                    <li>
+                      <label>
+                        <input type="radio" checked="" name="bump-type" value="saw">
+                        <span>Saw Tooth</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" name="bump-type" value="square">
+                        <span>Square</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" name="bump-type" value="triangle">
+                        <span>Triangle</span>
+                      </label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <label id="bump-count">How many bumps?</label>
+              <div id="bump-count-slider"></div>
+              <script>
+                $(function(){
+                  $('#bump-count-slider').slider({
+                    min: 7,
+                    max: 25,
+                    value: 10,
+                    change: function(event, ui) {
+                      alert(ui.value);
+                    }
+                  });
+                });
+              </script>
+              <label id="bump-height">How tall should the bumps be?</label>
+              <div id="bump-height-slider"></div>
+              <script>
+                $(function(){
+                  $('#bump-height-slider').slider({
+                    min: 2,
+                    max: 10,
+                    value: 5,
+                    change: function(event, ui) {
+                      alert(ui.value);
+                    }
+                  });
+                });
+              </script>
+            </fieldset>
+          </form>
+        </div>
+        <div class="span-two-thirds">
+          <p>Pretty render goes here</p>
+          <p>And a download button!</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
