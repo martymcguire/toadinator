@@ -29,6 +29,10 @@
         height: 460px;
         width: 460px;
       }
+      #get-toad-btn {
+        margin-top: 10px;
+        width: 100%;
+      }
     </style>
     <script>
       function update_preview(){
@@ -117,7 +121,7 @@
       </div>
       <div class="row">
         <div class="span6">
-          <form class="form-stacked">
+          <form class="form-stacked" action="/cgi-bin/get-toad.pl" method="post">
             <fieldset>
               <div class="clearfix">
                 <input type="hidden" id="bump-type" name="bump-type" value="triangle"/>
@@ -179,7 +183,7 @@
                   });
                 });
               </script>
-              <p>And a Download Button Goes Here!</p>
+              <input id="get-toad-btn" type="submit" class="btn large primary" value="Gimme My Toad!"/>
             </fieldset>
           </form>
         </div>
