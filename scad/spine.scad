@@ -11,7 +11,7 @@ module spine_with_teeth_and_height(teeth, height){
 }
 
 module spine(){
-	translate([0,-14,-4.5]) import_stl("../stl/spine.stl");
+	translate([0,-14,-4.5]) import_stl("../stl/spine-blank.stl");
 }
 
 /*
