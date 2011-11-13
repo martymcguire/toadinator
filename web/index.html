@@ -6,6 +6,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
     <style>
       .ui-slider { margin: 5px 0 10px 0; }
+      .bump-type-option {
+        background-color: #DDD;
+        width: 92px;
+        height: 92px;
+        border-radius: 10%;
+        margin-top: 5px;
+      }
+      .bump-type-option:hover {
+        background-color: #FFC;
+      }
+      .bump-type-option.selected, .bump-type-option.selected:hover {
+        background-color: #CCF;
+      }
+      .bump-type-option img {
+        margin: 5px;
+      }
     </style>
   </head>
   <body>
@@ -18,34 +34,36 @@
         </div>
       </div>
       <div class="row">
-        <div class="span-one-third">
+        <div class="span6">
           <form class="form-stacked">
             <fieldset>
               <div class="clearfix">
+                <input type="hidden" id="bump-type" name="bump-type" value="triangle"/>
                 <label id="bump-type">Bump Type</label>
-                <div class="input">
-                  <ul class="inputs-list">
-                    <li>
-                      <label>
-                        <input type="radio" checked="" name="bump-type" value="saw">
-                        <span>Saw Tooth</span>
-                      </label>
-                    </li>
-                    <li>
-                      <label>
-                        <input type="radio" name="bump-type" value="square">
-                        <span>Square</span>
-                      </label>
-                    </li>
-                    <li>
-                      <label>
-                        <input type="radio" name="bump-type" value="triangle">
-                        <span>Triangle</span>
-                      </label>
-                    </li>
-                  </ul>
+                <div class="row">
+                  <div id="bump-type-triangle" class="span-2 bump-type-option selected">
+                    <img alt="Triangle" title="Triangle" src="images/triangle-type.png"/>
+                  </div>
+                  <div id="bump-type-sawtooth" class="span-2 bump-type-option">
+                    <img alt="Sawtooth" title="Sawtooth" src="images/sawtooth-type.png"/>
+                  </div>
+                  <div id="bump-type-square" class="span-2 bump-type-option">
+                    <img alt="Square" title="Square" src="images/square-type.png"/>
+                  </div>
                 </div>
               </div>
+              <script>
+                $(function(){
+                  $('.bump-type-option').each(function(idx,ele){
+                    $(ele).click(function(){
+                      var bump_type = ele.id.replace(/bump-type-/,"");
+                      $('#bump-type')[0].value = bump_type;
+                      $('.bump-type-option').removeClass("selected");
+                      $(ele).addClass("selected");
+                    });
+                  });
+                });
+              </script>
               <label id="bump-count">How many bumps?</label>
               <div id="bump-count-slider"></div>
               <script>
@@ -77,7 +95,7 @@
             </fieldset>
           </form>
         </div>
-        <div class="span-two-thirds">
+        <div class="span10">
           <p>Pretty render goes here</p>
           <p>And a download button!</p>
         </div>
