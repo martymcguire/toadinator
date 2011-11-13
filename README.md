@@ -75,7 +75,7 @@ Backend Technologies
 
 The main 3D models were created using AutoCAD and OpenSCAD.
 
-Thanks to Tony Buser for the pin connectors in his [Toy Robot Toolkit](www.thingiverse.com/thing:11189)!
+Thanks to Tony Buser for the pin connectors in his [Toy Robot Toolkit](http://www.thingiverse.com/thing:11189)!
 
 Contributors
 ============
