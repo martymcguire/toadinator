@@ -22,6 +22,11 @@
       .bump-type-option img {
         margin: 5px;
       }
+      #toad-preview {
+        background-color: #EEE;
+        height: 460px;
+        width: 460px;
+      }
     </style>
   </head>
   <body>
@@ -92,12 +97,17 @@
                   });
                 });
               </script>
+              <p>And a Download Button Goes Here!</p>
             </fieldset>
           </form>
         </div>
         <div class="span10">
-          <p>Pretty render goes here</p>
-          <p>And a download button!</p>
+          <div class="row">
+            <div class="span8 offset1">
+              <h2>Your Toad</h2>
+              <div id="toad-preview"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
