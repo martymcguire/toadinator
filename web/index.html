@@ -69,7 +69,8 @@
                   });
                 });
               </script>
-              <label id="bump-count">How many bumps?</label>
+              <label>How many bumps?</label>
+              <input type="hidden" id="bump-count" name="bump-count" value="10"/>
               <div id="bump-count-slider"></div>
               <script>
                 $(function(){
@@ -77,13 +78,14 @@
                     min: 7,
                     max: 25,
                     value: 10,
-                    change: function(event, ui) {
-                      alert(ui.value);
+                    slide: function(event, ui) {
+                      $('#bump-count')[0].value = ui.value;
                     }
                   });
                 });
               </script>
-              <label id="bump-height">How tall should the bumps be?</label>
+              <label>How tall should the bumps be?</label>
+              <input type="hidden" id="bump-height" name="bump-height" value="5"/>
               <div id="bump-height-slider"></div>
               <script>
                 $(function(){
@@ -91,8 +93,8 @@
                     min: 2,
                     max: 10,
                     value: 5,
-                    change: function(event, ui) {
-                      alert(ui.value);
+                    slide: function(event, ui) {
+                      $('#bump-height')[0].value = ui.value;
                     }
                   });
                 });
