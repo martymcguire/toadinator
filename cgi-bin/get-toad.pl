@@ -9,12 +9,22 @@ $WORKDIR = $Bin;
 $WORKDIR =~ s/cgi-bin/work/;
 
 $q = new CGI::Simple;
-$bump_type = $q->param('bump-type');
-$bump_count = $q->param('bump-count');
-$bump_height = $q->param('bump-height');
+my $bump_type   = $q->param('bump-type');
+my $bump_count  = int($q->param('bump-count'));
+my $bump_height = int($q->param('bump-height'));
 
-$scadfile = File::Temp->new( UNLINK => 0, SUFFIX => '.scad', DIR => $WORKDIR);
-$scad = <<END;
+# Sanitize inputs
+my %valid_bump_types = (
+  triangle => 1,
+  sawtooth => 1,
+  square   => 1
+);
+$bump_type   = ($valid_bump_types{$bump_type} == 1) ? $bump_type : 'triangle';
+$bump_count  = (($bump_count >= 7) && ($bump_count <= 25)) ? $bump_count : 10;
+$bump_height = (($bump_height >= 2) && ($bump_height <= 20)) ? $bump_height : 5;
+
+my $scadfile = File::Temp->new( UNLINK => 0, SUFFIX => '.scad', DIR => $WORKDIR);
+my $scad = <<END;
 include <../scad/${bump_type}-period.scad>
 include <../scad/spine.scad>
 spine_with_teeth_and_height(${bump_count},${bump_height});
@@ -22,7 +32,7 @@ END
 print $scadfile $scad;
 close($scadfile);
 
-$stlfile = $scadfile->filename;
+my $stlfile = $scadfile->filename;
 $stlfile =~ s/scad$/stl/;
 system($OPENSCAD, "-s", $stlfile, $scadfile);
 
